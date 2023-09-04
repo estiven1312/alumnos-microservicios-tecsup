@@ -5,12 +5,27 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "curso_alumno")
 public @Data class CursoAlumno {
     @EmbeddedId
     private CursoAlumnoId id;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CursoAlumno that = (CursoAlumno) o;
+        return id.equals(that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
     @ManyToOne
     @MapsId("cursoId")
     @JoinColumn(name = "curso_id")

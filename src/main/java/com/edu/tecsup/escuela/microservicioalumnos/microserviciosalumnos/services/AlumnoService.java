@@ -8,6 +8,12 @@ import java.util.List;
 
 public interface AlumnoService {
     List<Alumno> getAlumnos();
+
+    Alumno findAlumno(Long id);
+
+    ResponseMessage deleteAlumno(Long id);
+
     ResponseMessage registrarAlumno(AlumnoDTO alumno);
 
+    ResponseMessage editarAlumno(AlumnoDTO alumno, Long id);
 }

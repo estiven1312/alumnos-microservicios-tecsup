@@ -14,9 +14,9 @@ public class Curso {
     private Long id;
     private String nombre;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cliclo_id")
+    @JoinColumn(name = "ciclo_id")
     private CicloAcademico ciclo;
 
-    @OneToMany(mappedBy = "curso")
+    @OneToMany(mappedBy = "curso", fetch = FetchType.LAZY, orphanRemoval = true)
     private Set<CursoAlumno> cursoAlumnos;
 }

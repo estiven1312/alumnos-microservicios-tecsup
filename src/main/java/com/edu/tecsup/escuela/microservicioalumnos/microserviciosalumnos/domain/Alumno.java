@@ -20,7 +20,9 @@ public @Data class Alumno {
     private String apellidoPaterno;
     @Column(name = "edad")
     private Integer edad;
-    @OneToMany(mappedBy = "alumno")
+    @OneToMany(mappedBy = "alumno", fetch = FetchType.LAZY, orphanRemoval = true)
     @JsonIgnore
     private Set<CursoAlumno> cursoAlumnos;
+
+
 }
